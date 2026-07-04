@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Verständlich erklärt: Was Ihr Arbeitgeber auf dem Diensthandy sehen kann – und was garantiert privat bleibt.">
+<title>Mein Diensthandy – Was sieht mein Arbeitgeber wirklich?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ---------- Farbsystem: helles & dunkles Design, jeweils mit hohem Kontrast ---------- */
+:root{
+  color-scheme:light dark;
+  --bg:#F4F6FA;
+  --card:#FFFFFF;
+  --ink:#131D28;          /* Haupttext – sehr dunkel für hohen Kontrast */
+  --ink-soft:#3D4C5C;     /* Fließtext – dunkler als zuvor, gut lesbar */
+  --line:#D5DDE6;
+  --blue:#2350C4;
+  --blue-strong:#2350C4;
+  --blue-soft:#E7EDFB;
+  --green:#0E7A4F;
+  --green-strong:#0E7A4F;
+  --green-soft:#E2F4EC;
+  --amber:#9E5D00;
+  --amber-strong:#9E5D00;
+  --amber-soft:#FBEFDC;
+  --phone-frame:#101820;
+  --dark-panel:#18232F;
+  --dark-panel-text:#E4EBF3;
+  --mono:'IBM Plex Mono',monospace;
+  --radius:14px;
+  --shadow:0 18px 40px rgba(16,24,32,.18);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0F161E;
+    --card:#1A2530;
+    --ink:#F2F6FA;        /* fast weiß auf dunklem Grund */
+    --ink-soft:#C0CCD9;   /* hell genug für lange Texte */
+    --line:#31404F;
+    --blue:#7FA3F5;       /* aufgehellte Akzente für dunklen Grund */
+    --blue-strong:#9BB8F8;
+    --blue-soft:#22314B;
+    --green:#4FC896;
+    --green-strong:#6FD8AC;
+    --green-soft:#15332A;
+    --amber:#F0B45C;
+    --amber-strong:#F5C97F;
+    --amber-soft:#3A2E17;
+    --phone-frame:#000000;
+    --dark-panel:#22303E;
+    --dark-panel-text:#E4EBF3;
+    --shadow:0 18px 40px rgba(0,0,0,.5);
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:16px;
+}
+h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.2;color:var(--ink)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+
+/* ---------- Header ---------- */
+header{
+  background:var(--card);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1060px;margin:0 auto}
+.brand{font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:9px;color:var(--ink)}
+.brand-dot{width:10px;height:10px;border-radius:3px;background:var(--blue);display:inline-block}
+.nav-links{display:flex;gap:18px;font-size:.85rem}
+.nav-links a{text-decoration:none;color:var(--ink-soft);font-weight:500}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--blue-strong)}
+@media(max-width:680px){.nav-links{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{padding:60px 0 36px}
+.eyebrow{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue-strong);font-weight:500;margin-bottom:14px;
+}
+.hero h1{font-size:clamp(1.7rem,4.5vw,2.8rem);font-weight:800;max-width:24ch;margin-bottom:18px}
+.hero p{max-width:62ch;color:var(--ink-soft);font-size:1.05rem}
+.hero p em{color:var(--ink);font-style:italic}
+
+/* ---------- Beruhigungs-Box ---------- */
+.calm{
+  margin-top:28px;background:var(--green-soft);border:1.5px solid var(--green);
+  border-radius:var(--radius);padding:22px 24px;max-width:720px;
+}
+.calm h2{font-size:1.05rem;color:var(--green-strong);margin-bottom:8px;display:flex;align-items:center;gap:9px}
+.calm p{color:var(--ink);font-size:.95rem;max-width:none}
+
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin:28px 0 0}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;color:var(--ink)}
+.dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.dot.g{background:var(--green)} .dot.a{background:var(--amber)} .dot.b{background:var(--blue)}
+
+/* ---------- Abschnitte ---------- */
+section{padding:52px 0}
+.section-head{margin-bottom:26px}
+.section-head h2{font-size:clamp(1.35rem,3vw,1.9rem);margin-bottom:8px}
+.section-head p{color:var(--ink-soft);max-width:66ch}
+.section-head strong{color:var(--ink)}
+
+/* ---------- Daten-Check (Telefon) ---------- */
+.explorer{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:start}
+@media(max-width:820px){.explorer{grid-template-columns:1fr}}
+.phone{
+  background:var(--phone-frame);border-radius:38px;padding:14px;box-shadow:var(--shadow);
+  max-width:340px;margin:0 auto;width:100%;
+}
+.phone-screen{
+  background:linear-gradient(170deg,#EEF3FA 0%,#DFE8F4 100%);
+  border-radius:26px;padding:20px 14px 22px;min-height:430px;
+}
+.phone-notch{width:110px;height:20px;background:var(--phone-frame);border-radius:0 0 14px 14px;margin:-20px auto 14px}
+.phone-status{font-family:var(--mono);font-size:.62rem;color:#3D4C5C;display:flex;justify-content:space-between;padding:0 6px;margin-bottom:14px}
+.app-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 6px}
+.app{
+  background:none;border:none;cursor:pointer;font-family:inherit;
+  display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 1px;border-radius:10px;
+}
+.app:focus-visible{outline:3px solid #2350C4;outline-offset:2px}
+.app-icon{
+  width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;position:relative;transition:transform .15s ease;
+  box-shadow:0 2px 6px rgba(16,24,32,.15);
+}
+/* Icons liegen immer auf dem hellen Telefon-Display → feste helle Farben */
+.app-icon.bg-g{background:#DCF2E8}
+.app-icon.bg-a{background:#FAEBD2}
+.app-icon.bg-b{background:#DFE9FB}
+.app:hover .app-icon{transform:translateY(-3px)}
+.app.active .app-icon{outline:3px solid #2350C4;outline-offset:2px}
+.app-label{font-size:.64rem;font-weight:600;color:#131D28;text-align:center;line-height:1.2}
+.badge{position:absolute;top:-5px;right:-5px;width:16px;height:16px;border-radius:50%;border:2px solid #fff}
+.badge.g{background:#0E7A4F} .badge.a{background:#9E5D00} .badge.b{background:#2350C4}
+
+.detail{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;position:sticky;top:80px;
+}
+.detail-status{
+  display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;
+  padding:5px 13px;border-radius:99px;margin-bottom:14px;
+}
+.detail-status.g{background:var(--green-soft);color:var(--green-strong)}
+.detail-status.a{background:var(--amber-soft);color:var(--amber-strong)}
+.detail-status.b{background:var(--blue-soft);color:var(--blue-strong)}
+.detail h3{font-size:1.2rem;margin-bottom:10px}
+.detail p{color:var(--ink-soft);font-size:.95rem}
+.detail-hint{
+  margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);
+  font-family:var(--mono);font-size:.74rem;color:var(--ink-soft);
+}
+
+/* ---------- Vor-/Nachteile ---------- */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:720px){.cols{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.panel h3{font-size:1.05rem;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.panel ul{list-style:none}
+.panel li{
+  padding:10px 0 10px 28px;position:relative;font-size:.93rem;color:var(--ink-soft);
+  border-bottom:1px solid var(--line);
+}
+.panel li strong,.panel li em{color:var(--ink)}
+.panel li:last-child{border-bottom:none}
+.panel li::before{position:absolute;left:0;font-weight:700}
+.panel.pro li::before{content:"+";color:var(--green-strong);font-size:1.1rem;top:7px}
+.panel.contra li::before{content:"–";color:var(--amber-strong);font-size:1.1rem;top:7px}
+
+/* ---------- VPN-Demo ---------- */
+.vpn-demo{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.vpn-toggle{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.vpn-btn{
+  font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:.88rem;
+  padding:10px 18px;border-radius:99px;border:1.5px solid var(--line);background:var(--bg);
+  color:var(--ink);cursor:pointer;transition:all .15s ease;
+}
+.vpn-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.vpn-btn.on{background:#2350C4;border-color:#2350C4;color:#FFFFFF}
+.vpn-route{display:flex;align-items:center;flex-wrap:wrap;row-gap:16px;font-family:var(--mono);font-size:.78rem}
+.node{
+  border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg);
+  text-align:center;min-width:110px;
+}
+.node strong{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:.86rem;color:var(--ink);margin-bottom:2px}
+.node span{color:var(--ink-soft);font-size:.68rem}
+.arrow{flex:1;min-width:44px;height:2px;position:relative;margin:0 4px}
+.arrow::after{
+  content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left-color:currentColor;
+}
+.arrow.company{background:var(--blue);color:var(--blue)}
+.arrow.private{background:var(--green);color:var(--green)}
+.node.tunnel{border-color:var(--blue);background:var(--blue-soft)}
+.vpn-note{margin-top:20px;font-size:.9rem;color:var(--ink-soft);border-left:3px solid var(--line);padding-left:14px}
+.vpn-note strong{color:var(--ink)}
+
+/* ---------- Merksätze ---------- */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.rule{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+.rule .num{
+  font-family:var(--mono);font-size:.72rem;color:var(--blue-strong);letter-spacing:.12em;
+  text-transform:uppercase;display:block;margin-bottom:8px;font-weight:500;
+}
+.rule p{font-size:.93rem;color:var(--ink-soft)}
+.rule strong{color:var(--ink)}
+
+/* ---------- FAQ ---------- */
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;cursor:pointer;
+  font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:.95rem;color:var(--ink);
+  padding:17px 48px 17px 20px;position:relative;line-height:1.45;
+}
+.faq-q:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
+.faq-q::after{
+  content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);
+  font-size:1.3rem;color:var(--blue-strong);font-weight:400;transition:transform .2s ease;
+}
+.faq-item.open .faq-q::after{transform:translateY(-50%) rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.faq-a-inner{padding:0 20px 18px;color:var(--ink-soft);font-size:.93rem}
+
+/* ---------- Fazit ---------- */
+.fazit{background:var(--dark-panel);color:var(--dark-panel-text);border-radius:var(--radius);padding:36px 30px}
+.fazit h2{color:#FFFFFF;font-size:1.4rem;margin-bottom:14px}
+.fazit p{max-width:70ch;font-size:.98rem;margin-bottom:12px}
+.fazit strong{color:#FFFFFF}
+.fazit .mono-line{font-family:var(--mono);font-size:.74rem;color:#A9BACB;margin-top:8px}
+
+footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <span class="brand"><span class="brand-dot"></span>Mein Diensthandy</span>
+    <nav class="nav-links">
+      <a href="#explorer">Daten-Check</a>
+      <a href="#vorteile">Vor- &amp; Nachteile</a>
+      <a href="#vpn">VPN</a>
+      <a href="#faq">Fragen</a>
+      <a href="#fazit">Fazit</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">Einfach erklärt · ohne Fachchinesisch</div>
+    <h1>Liest mein Chef heimlich mit? Nein – und hier steht, warum.</h1>
+    <p>Sie haben ein Diensthandy, dürfen es privat nutzen – und in den Einstellungen taucht ein „Verwaltungsprofil" auf. Das klingt nach Überwachung, ist aber in Wahrheit etwas ganz anderes: eine Art digitaler Hausmeister, der sich um Sicherheit und Firmen-Apps kümmert. Diese Seite zeigt Ihnen ehrlich, was Ihr Arbeitgeber sehen kann, was er garantiert <em>nicht</em> sehen kann – und wo die Vor- und Nachteile liegen.</p>
+
+    <div class="calm">
+      <h2>🛡️ Das Wichtigste vorweg</h2>
+      <p>Ihre privaten WhatsApp-Chats, Fotos, Nachrichten und Passwörter kann Ihr Arbeitgeber <strong>nicht lesen</strong>. Das ist keine Vertrauensfrage, sondern von Apple technisch fest ins iPhone eingebaut: Die Geräteverwaltung und Ihre privaten Inhalte sind strikt voneinander getrennt. Ein Verwaltungsprofil ist keine Spionagesoftware.</p>
+    </div>
+
+    <div class="legend" aria-hidden="true">
+      <span class="legend-item"><span class="dot a"></span>Kann die Firma sehen / verwalten</span>
+      <span class="legend-item"><span class="dot g"></span>Bleibt privat – technisch geschützt</span>
+      <span class="legend-item"><span class="dot b"></span>Kommt darauf an</span>
+    </div>
+  </div>
+
+  <!-- DATEN-CHECK -->
+  <section id="explorer">
+    <div class="section-head">
+      <h2>Probieren Sie es aus: Der Daten-Check</h2>
+      <p>Tippen Sie auf ein Symbol – die Ampel zeigt sofort, ob Ihr Arbeitgeber Zugriff hat.</p>
+    </div>
+    <div class="explorer">
+      <div class="phone" role="group" aria-label="iPhone-Simulation mit Datenkategorien">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="phone-status"><span>09:41</span><span>Firmenprofil aktiv</span></div>
+          <div class="app-grid" id="appGrid"></div>
+        </div>
+      </div>
+      <div class="detail" id="detail" aria-live="polite">
+        <span class="detail-status b" id="detailStatus">Kategorie wählen</span>
+        <h3 id="detailTitle">Wählen Sie eine Kategorie</h3>
+        <p id="detailText">Tippen Sie links auf ein Symbol, um zu erfahren, ob Ihr Arbeitgeber diese Daten sehen kann – und warum.</p>
+        <div class="detail-hint" id="detailHint">Grundlage: die eingebauten Datenschutz-Regeln von iOS</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOR- UND NACHTEILE -->
+  <section id="vorteile">
+    <div class="section-head">
+      <h2>Vor- und Nachteile eines verwalteten Diensthandys</h2>
+      <p>Ehrlich abgewogen: Das Verwaltungsprofil bringt Ihnen echte Vorteile – und ein paar Einschränkungen, die Sie kennen sollten.</p>
+    </div>
+    <div class="cols">
+      <div class="panel pro">
+        <h3><span class="dot g"></span>Ihre Vorteile</h3>
+        <ul>
+          <li><strong>Kostenloses Gerät:</strong> Sie nutzen ein aktuelles iPhone auch privat – die Firma zahlt.</li>
+          <li><strong>Schutz bei Verlust:</strong> Geht das Handy verloren, kann die IT es sperren – niemand kommt an Ihre Daten, auch nicht an die privaten.</li>
+          <li><strong>Immer sicher:</strong> Verschlüsselung, Passcode und Updates werden automatisch durchgesetzt. Davon profitieren auch Ihre privaten Fotos und Chats.</li>
+          <li><strong>Alles eingerichtet:</strong> Firmen-Mail, WLAN und VPN funktionieren einfach – ohne dass Sie etwas konfigurieren müssen.</li>
+          <li><strong>Klare Trennung:</strong> Firmendaten und Privates bleiben sauber auseinander – das schützt beide Seiten.</li>
+        </ul>
+      </div>
+      <div class="panel contra">
+        <h3><span class="dot a"></span>Die Nachteile</h3>
+        <ul>
+          <li><strong>App-Liste ist sichtbar:</strong> Die Firma kann sehen, <em>welche</em> Apps installiert sind – nicht deren Inhalte, aber immerhin die Titel.</li>
+          <li><strong>Fern-Löschung möglich:</strong> Im Ernstfall (Verlust, Kündigung) kann das Gerät komplett gelöscht werden – private Fotos ohne Backup wären weg. Tipp: eigenes iCloud-Backup mit privater Apple-ID nutzen.</li>
+          <li><strong>Einschränkungen:</strong> Manche Funktionen können gesperrt sein (z.&nbsp;B. bestimmte Einstellungen) – die Firma bestimmt die Regeln.</li>
+          <li><strong>Restunsicherheit:</strong> Wie jede einzelne Regel konfiguriert ist, sieht man von außen nicht zu 100&nbsp;% – im Zweifel bei IT oder Betriebsrat nachfragen.</li>
+          <li><strong>Firmenkonto = Firmendaten:</strong> Alles, was Sie über die Firmen-Mail oder Firmen-Apps schreiben, gehört dem Unternehmen.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- VPN -->
+  <section id="vpn">
+    <div class="section-head">
+      <h2>„Da ist ein Firmen-VPN – wird jetzt alles mitgelesen?"</h2>
+      <p>Nein. Auf Ihrem Gerät ist ein sogenanntes <strong>Per-App-VPN</strong> eingerichtet: Nur die Firmen-Apps nutzen den sicheren Tunnel zur Firma. Alles Private geht ganz normal ins Internet – so, als gäbe es das Profil gar nicht. Schalten Sie um und sehen Sie den Unterschied:</p>
+    </div>
+    <div class="vpn-demo">
+      <div class="vpn-toggle" role="group" aria-label="App-Typ wählen">
+        <button type="button" class="vpn-btn on" id="btnCompany">🏢 Firmen-App (z.&nbsp;B. Outlook)</button>
+        <button type="button" class="vpn-btn" id="btnPrivate">💬 Private App (z.&nbsp;B. WhatsApp)</button>
+      </div>
+      <div class="vpn-route">
+        <div class="node"><strong id="srcName">Outlook</strong><span>auf Ihrem iPhone</span></div>
+        <div class="arrow company" id="arrow1"></div>
+        <div class="node tunnel" id="tunnelNode"><strong>Firmen-Tunnel</strong><span>nur für Firmen-Apps</span></div>
+        <div class="arrow company" id="arrow2"></div>
+        <div class="node"><strong id="dstName">Firmennetz</strong><span id="dstSub">Mail-Server der Firma</span></div>
+      </div>
+      <p class="vpn-note" id="vpnNote"><strong>Firmen-Verkehr:</strong> Mails und Daten der Firmen-Apps laufen durch den Tunnel ins Firmennetz – das ist normal und dient der Sicherheit der Firmendaten.</p>
+    </div>
+  </section>
+
+  <!-- MERKSÄTZE -->
+  <section id="merken">
+    <div class="section-head">
+      <h2>Vier Sätze, die Sie sich merken können</h2>
+    </div>
+    <div class="rules">
+      <div class="rule"><span class="num">Merksatz 1</span><p><strong>Verwalten heißt nicht mitlesen.</strong> Die Firma verwaltet das Gerät (Sicherheit, Apps, Sperren) – nicht Ihre Inhalte.</p></div>
+      <div class="rule"><span class="num">Merksatz 2</span><p><strong>Apple baut die Mauer.</strong> Die Trennung von Firmen- und Privatdaten ist in iOS fest eingebaut – der Arbeitgeber kann sie nicht umgehen.</p></div>
+      <div class="rule"><span class="num">Merksatz 3</span><p><strong>Firmenkonto = Firmensache.</strong> Nur was Sie in Firmen-Apps und über die Firmen-Mail machen, ist für die Firma einsehbar. Also: Privates privat halten.</p></div>
+      <div class="rule"><span class="num">Merksatz 4</span><p><strong>Fragen ist erlaubt.</strong> IT-Abteilung und Betriebsrat müssen Ihnen sagen können, welche Regeln gelten. In Deutschland schützt Sie zusätzlich der Datenschutz (DSGVO).</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-head">
+      <h2>Häufige Fragen – ehrlich beantwortet</h2>
+    </div>
+    <div id="faqList"></div>
+  </section>
+
+  <!-- FAZIT -->
+  <section id="fazit">
+    <div class="fazit">
+      <h2>Fazit: Kein Grund zur Sorge</h2>
+      <p>Ihr Diensthandy wird professionell verwaltet – mit dem Ziel, <strong>Firmendaten zu schützen</strong>, nicht Sie zu überwachen. Die Rechte der Firma betreffen das Gerät (sperren, löschen, Apps verteilen), nicht Ihr Privatleben. Ihre Chats, Fotos und Passwörter bleiben durch die eingebauten Schutzmechanismen von iOS privat.</p>
+      <p>Die einzige goldene Regel: <strong>Trennen Sie Privates und Berufliches.</strong> Private Dinge in privaten Apps mit der privaten Apple-ID – dann haben Sie alle Vorteile des Diensthandys ohne Bauchschmerzen.</p>
+      <p class="mono-line">Verwaltetes Gerät · private Nutzung erlaubt · private Inhalte technisch getrennt</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>Diese Seite dient der allgemeinen Information und ersetzt keine Rechtsberatung.<br>Bei konkreten Fragen helfen IT-Abteilung, Betriebsrat oder Datenschutzbeauftragte weiter.</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- Daten-Check ---------- */
+var cats = [
+  {icon:"💬",label:"WhatsApp",status:"g",title:"Ihre WhatsApp-Chats",text:"Bleiben komplett privat. Die App ist auf dem iPhone in einem eigenen, abgeschotteten Bereich – und die Chats sind zusätzlich verschlüsselt. Selbst mit größtem Aufwand könnte die Firma hier nicht mitlesen.",hint:"Abgeschottet + verschlüsselt = doppelt sicher"},
+  {icon:"🖼️",label:"Fotos",status:"g",title:"Ihre privaten Fotos & Videos",text:"Ihre Fotomediathek ist für die Geräteverwaltung unsichtbar. Die Firma sieht weder Bilder noch Alben – das lässt Apple technisch gar nicht zu.",hint:"Kein Zugriff möglich – von Apple so gebaut"},
+  {icon:"✉️",label:"iMessage",status:"g",title:"Ihre Nachrichten (iMessage/SMS)",text:"Was Sie privat schreiben, bleibt privat. Die Nachrichten-App gehört zu Ihrem persönlichen Bereich, auf den die Verwaltung keinen Zugriff hat.",hint:"Persönlicher Bereich – für die Firma tabu"},
+  {icon:"🌐",label:"Safari",status:"g",title:"Ihr Browser-Verlauf",text:"Welche Webseiten Sie besuchen, wird nicht an die Firma gemeldet. Kleiner Hinweis: Im Firmen-WLAN kann das Netzwerk selbst sehen, welche Seiten aufgerufen werden – das gilt aber in jedem WLAN und hat nichts mit dem Handyprofil zu tun.",hint:"Tipp: Privates lieber über Mobilfunk surfen"},
+  {icon:"🔑",label:"Passwörter",status:"g",title:"Ihre gespeicherten Passwörter",text:"Alle im iPhone gespeicherten Passwörter sind stark verschlüsselt und für die Geräteverwaltung unerreichbar.",hint:"Verschlüsselt im sicheren Chip des iPhones"},
+  {icon:"👤",label:"Kontakte",status:"g",title:"Ihre privaten Kontakte",text:"Private Kontakte bleiben privat. Nur wenn Sie Kontakte bewusst im Firmen-Konto speichern, liegen sie auf dem Firmenserver – achten Sie beim Speichern einfach auf das richtige Konto.",hint:"Beim Speichern: privates Konto wählen"},
+  {icon:"📧",label:"Firmen-Mail",status:"a",title:"Firmen-E-Mails & -Kalender",text:"Alles im Firmen-Postfach gehört der Firma und liegt auf deren Servern – das wäre auch am Firmen-PC so. Deshalb: private Mails über ein privates Konto schreiben.",hint:"Gilt am Handy genauso wie am Büro-PC"},
+  {icon:"📦",label:"App-Liste",status:"a",title:"Welche Apps installiert sind",text:"Die Firma kann sehen, DASS z. B. WhatsApp oder Instagram installiert ist – aber niemals, was Sie darin tun. Vergleichbar mit einem Bücherregal: Man sieht die Buchrücken, aber kann die Bücher nicht aufschlagen.",hint:"Nur die Titel – nie die Inhalte"},
+  {icon:"🛠️",label:"Firmen-Apps",status:"a",title:"Die Firmen-Apps",text:"Apps wie Outlook oder Teams hat die Firma installiert und kann sie verwalten, aktualisieren und entfernen. Was Sie DARIN schreiben, ist Firmensache – wie eine dienstliche E-Mail.",hint:"Faustregel: Firmen-App = Firmendaten"},
+  {icon:"📱",label:"Geräteinfo",status:"a",title:"Technische Gerätedaten",text:"Modell, Seriennummer, iOS-Version und ob ein Passcode gesetzt ist – solche technischen Infos sieht die IT. Das ist wie beim Firmenwagen: Kennzeichen und TÜV-Status sind bekannt, aber nicht, mit wem Sie fahren.",hint:"Technik-Check, keine Inhalte"},
+  {icon:"🔒",label:"Zertifikate",status:"a",title:"Zertifikate & Anmeldung",text:"Die Zertifikate auf dem Gerät sind digitale Ausweise: Sie beweisen den Firmenservern, dass dieses Handy dazugehört. Sie sind zum Anmelden da – nicht zum Mitlesen.",hint:"Digitaler Werksausweis, kein Abhörgerät"},
+  {icon:"📍",label:"Standort",status:"b",title:"Ihr Standort",text:"Kommt darauf an – aber Entwarnung: Eine Ortung ist höchstens beim Verlust des Geräts vorgesehen. In Ihrem Profil gibt es keinen Hinweis auf eine dauerhafte Ortung oder Bewegungsprofile. Heimliches Dauer-Tracking wäre in Deutschland zudem rechtlich kaum zulässig.",hint:"Kein Hinweis auf Ortung im Profil gefunden"}
+];
+
+var statusLabel = {g:"● Bleibt privat", a:"● Kann die Firma sehen", b:"● Kommt darauf an"};
+
+function select(i, btn){
+  var apps = document.querySelectorAll(".app");
+  for (var k = 0; k < apps.length; k++) apps[k].classList.remove("active");
+  btn.classList.add("active");
+  var c = cats[i];
+  var s = document.getElementById("detailStatus");
+  s.className = "detail-status " + c.status;
+  s.textContent = statusLabel[c.status];
+  document.getElementById("detailTitle").textContent = c.title;
+  document.getElementById("detailText").textContent = c.text;
+  document.getElementById("detailHint").textContent = c.hint;
+}
+
+function buildGrid(){
+  var grid = document.getElementById("appGrid");
+  cats.forEach(function(c, i){
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "app";
+    btn.setAttribute("aria-label", c.label + " – Status anzeigen");
+
+    var icon = document.createElement("span");
+    icon.className = "app-icon bg-" + c.status;
+    icon.textContent = c.icon;
+    var badge = document.createElement("span");
+    badge.className = "badge " + c.status;
+    icon.appendChild(badge);
+
+    var label = document.createElement("span");
+    label.className = "app-label";
+    label.textContent = c.label;
+
+    btn.appendChild(icon);
+    btn.appendChild(label);
+    btn.addEventListener("click", function(){ select(i, btn); });
+    grid.appendChild(btn);
+  });
+}
+
+/* ---------- VPN-Demo ---------- */
+function setVpn(mode){
+  var company = mode === "company";
+  document.getElementById("btnCompany").classList.toggle("on", company);
+  document.getElementById("btnPrivate").classList.toggle("on", !company);
+  document.getElementById("srcName").textContent = company ? "Outlook" : "WhatsApp";
+  document.getElementById("tunnelNode").style.display = company ? "" : "none";
+  document.getElementById("arrow2").style.display = company ? "" : "none";
+  document.getElementById("arrow1").className = "arrow " + (company ? "company" : "private");
+  document.getElementById("dstName").textContent = company ? "Firmennetz" : "Internet";
+  document.getElementById("dstSub").textContent = company ? "Mail-Server der Firma" : "direkt · ohne Umweg über die Firma";
+  var note = document.getElementById("vpnNote");
+  if (company) {
+    note.innerHTML = "<strong>Firmen-Verkehr:</strong> Mails und Daten der Firmen-Apps laufen durch den Tunnel ins Firmennetz – das ist normal und dient der Sicherheit der Firmendaten.";
+  } else {
+    note.innerHTML = "<strong>Privater Verkehr:</strong> Ihre privaten Apps machen einen Bogen um die Firma und gehen direkt ins Internet – als gäbe es das Profil gar nicht. WhatsApp &amp; Co. sind zusätzlich verschlüsselt.";
+  }
+}
+
+/* ---------- FAQ ---------- */
+var faqs = [
+  {q:"Liest mein Arbeitgeber meine WhatsApp-Nachrichten oder sieht meine Fotos?",a:"Nein – und zwar garantiert nicht. Das ist keine Frage des Vertrauens, sondern der Technik: Apple hat das iPhone so gebaut, dass die Geräteverwaltung keinen Zugriff auf private Apps, Chats oder die Fotomediathek hat. Diese Grenze kann Ihr Arbeitgeber nicht umgehen, selbst wenn er wollte."},
+  {q:"Was ist dieses „Verwaltungsprofil\u201C überhaupt?",a:"Stellen Sie es sich wie einen Hausmeister für das Handy vor: Es sorgt dafür, dass ein Passcode gesetzt ist, das Gerät verschlüsselt ist, die Firmen-Apps aktuell sind und die Firmen-Mail funktioniert. Es kümmert sich um das Gerät – nicht um Sie."},
+  {q:"Kann die Firma sehen, welche Apps ich installiert habe?",a:"Ja, das ist der wichtigste Punkt, den Sie kennen sollten: Die Liste der installierten Apps ist einsehbar – also z. B., dass Tinder oder Instagram installiert ist. Die Inhalte darin bleiben aber unsichtbar. Wenn Ihnen schon die App-Titel unangenehm wären, ist ein zweites, privates Handy die entspanntere Lösung."},
+  {q:"Läuft mein privates Surfen über das Firmen-VPN?",a:"Nein. Ihr Gerät nutzt ein „Per-App-VPN\u201C: Nur die Firmen-Apps gehen durch den Firmentunnel. Private Apps und Ihr Browser nutzen die normale Internetverbindung. Ein deutliches Zeichen dafür: Sie konnten parallel sogar ein eigenes VPN (z. B. NordVPN) einschalten – bei einer Komplett-Überwachung wäre das nicht möglich."},
+  {q:"Kann mein Chef sehen, wo ich bin?",a:"Nach allem, was das Profil zeigt: nein. Eine Ortung ist typischerweise nur für den Verlustfall vorgesehen. Für Ihr Gerät gibt es keinen Hinweis auf Echtzeit-Ortung oder Bewegungsprofile – und heimliches Dauer-Tracking von Mitarbeitern wäre in Deutschland rechtlich ohnehin kaum haltbar."},
+  {q:"Was passiert mit meinen privaten Fotos, wenn die Firma das Gerät löscht?",a:"Bei einer Fern-Löschung (z. B. bei Verlust oder wenn Sie die Firma verlassen) wird das Gerät komplett zurückgesetzt – dann wären auch private Fotos weg, wenn es kein Backup gibt. Deshalb der wichtigste praktische Tipp dieser Seite: Richten Sie mit Ihrer privaten Apple-ID ein iCloud-Backup bzw. iCloud-Fotos ein. Dann sind Ihre Erinnerungen immer sicher."},
+  {q:"Sind meine Firmen-Mails privat?",a:"Nein – alles im Firmen-Postfach und in Firmen-Apps wie Teams gehört dem Unternehmen, genau wie am Büro-PC. Die einfache Regel: Privates über private Apps und private Konten, Dienstliches über die Firmen-Apps. Dann gibt es nie ein Problem."},
+  {q:"Wie kann ich sicher sein, dass wirklich alles so ist?",a:"Zu 100 % lässt sich von außen nicht jede einzelne Einstellung prüfen – das ist der ehrliche Teil der Antwort. Aber: Alles, was auf dem Gerät sichtbar ist, spricht für eine ganz normale, professionelle Verwaltung. Und Sie haben ein Recht auf Auskunft: IT-Abteilung, Betriebsrat und Datenschutzbeauftragte müssen Ihnen erklären, welche Regeln gelten. In Deutschland schützt Sie zusätzlich die DSGVO – heimliche Überwachung wäre für den Arbeitgeber ein erhebliches rechtliches Risiko."}
+];
+
+function buildFaq(){
+  var faqList = document.getElementById("faqList");
+  faqs.forEach(function(f){
+    var item = document.createElement("div");
+    item.className = "faq-item";
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "faq-q";
+    btn.setAttribute("aria-expanded", "false");
+    btn.textContent = f.q;
+
+    var ans = document.createElement("div");
+    ans.className = "faq-a";
+    var inner = document.createElement("div");
+    inner.className = "faq-a-inner";
+    inner.textContent = f.a;
+    ans.appendChild(inner);
+
+    btn.addEventListener("click", function(){
+      var open = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      ans.style.maxHeight = open ? ans.scrollHeight + "px" : "0";
+    });
+
+    item.appendChild(btn);
+    item.appendChild(ans);
+    faqList.appendChild(item);
+  });
+}
+
+/* ---------- Start ---------- */
+function init(){
+  try {
+    buildGrid();
+    buildFaq();
+    document.getElementById("btnCompany").addEventListener("click", function(){ setVpn("company"); });
+    document.getElementById("btnPrivate").addEventListener("click", function(){ setVpn("private"); });
+    var first = document.querySelector(".app");
+    if (first) select(0, first);
+  } catch (e) {
+    /* Seite bleibt auch ohne JavaScript lesbar */
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
+})();
+</script>
+</body>
+</html>
