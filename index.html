@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<meta name="description" content="Verständlich erklärt: Was Ihr Arbeitgeber auf dem Diensthandy sehen kann – und was garantiert privat bleibt.">
-<title>Mein Diensthandy – Was sieht mein Arbeitgeber wirklich?</title>
+<meta name="description" content="Für Hafid, verständlich erklärt: Was der Arbeitgeber auf einem Diensthandy sehen kann – und was garantiert privat bleibt.">
+<title>Hafid &amp; das Diensthandy – Was sieht der Arbeitgeber wirklich?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -15,8 +15,8 @@
   color-scheme:light dark;
   --bg:#F4F6FA;
   --card:#FFFFFF;
-  --ink:#131D28;          /* Haupttext – sehr dunkel für hohen Kontrast */
-  --ink-soft:#3D4C5C;     /* Fließtext – dunkler als zuvor, gut lesbar */
+  --ink:#131D28;
+  --ink-soft:#3D4C5C;
   --line:#D5DDE6;
   --blue:#2350C4;
   --blue-strong:#2350C4;
@@ -38,10 +38,10 @@
   :root{
     --bg:#0F161E;
     --card:#1A2530;
-    --ink:#F2F6FA;        /* fast weiß auf dunklem Grund */
-    --ink-soft:#C0CCD9;   /* hell genug für lange Texte */
+    --ink:#F2F6FA;
+    --ink-soft:#C0CCD9;
     --line:#31404F;
-    --blue:#7FA3F5;       /* aufgehellte Akzente für dunklen Grund */
+    --blue:#7FA3F5;
     --blue-strong:#9BB8F8;
     --blue-soft:#22314B;
     --green:#4FC896;
@@ -104,7 +104,12 @@ header{
 .calm h2{font-size:1.05rem;color:var(--green-strong);margin-bottom:8px;display:flex;align-items:center;gap:9px}
 .calm p{color:var(--ink);font-size:.95rem;max-width:none}
 
-.legend{display:flex;flex-wrap:wrap;gap:14px;margin:28px 0 0}
+/* ---------- Legende (direkt über dem Daten-Check) ---------- */
+.legend{
+  display:flex;flex-wrap:wrap;gap:12px 18px;margin:0 0 20px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 18px;
+}
 .legend-item{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;color:var(--ink)}
 .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
 .dot.g{background:var(--green)} .dot.a{background:var(--amber)} .dot.b{background:var(--blue)}
@@ -140,7 +145,6 @@ section{padding:52px 0}
   font-size:1.35rem;position:relative;transition:transform .15s ease;
   box-shadow:0 2px 6px rgba(16,24,32,.15);
 }
-/* Icons liegen immer auf dem hellen Telefon-Display → feste helle Farben */
 .app-icon.bg-g{background:#DCF2E8}
 .app-icon.bg-a{background:#FAEBD2}
 .app-icon.bg-b{background:#DFE9FB}
@@ -194,20 +198,36 @@ section{padding:52px 0}
 }
 .vpn-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .vpn-btn.on{background:#2350C4;border-color:#2350C4;color:#FFFFFF}
-.vpn-route{display:flex;align-items:center;flex-wrap:wrap;row-gap:16px;font-family:var(--mono);font-size:.78rem}
+
+/* Querformat / breite Bildschirme: Kette von links nach rechts */
+.vpn-route{display:flex;align-items:center;font-family:var(--mono);font-size:.78rem}
 .node{
   border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg);
   text-align:center;min-width:110px;
 }
 .node strong{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:.86rem;color:var(--ink);margin-bottom:2px}
 .node span{color:var(--ink-soft);font-size:.68rem}
-.arrow{flex:1;min-width:44px;height:2px;position:relative;margin:0 4px}
+.arrow{flex:1;min-width:44px;height:2px;position:relative;margin:0 4px;background:currentColor}
 .arrow::after{
-  content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left-color:currentColor;
+  content:"";position:absolute;right:-1px;top:-4px;
+  border:5px solid transparent;border-left-color:currentColor;
 }
-.arrow.company{background:var(--blue);color:var(--blue)}
-.arrow.private{background:var(--green);color:var(--green)}
+.arrow.company{color:var(--blue)}
+.arrow.private{color:var(--green)}
 .node.tunnel{border-color:var(--blue);background:var(--blue-soft)}
+
+/* Hochformat / schmale Bildschirme: Kette von oben nach unten */
+@media(max-width:600px){
+  .vpn-route{flex-direction:column;align-items:center}
+  .node{width:100%;max-width:320px;min-width:0}
+  .arrow{
+    flex:none;width:2px;height:34px;min-width:0;margin:6px 0;
+  }
+  .arrow::after{
+    right:auto;top:auto;left:-4px;bottom:-2px;
+    border:5px solid transparent;border-top-color:currentColor;border-left-color:transparent;
+  }
+}
 .vpn-note{margin-top:20px;font-size:.9rem;color:var(--ink-soft);border-left:3px solid var(--line);padding-left:14px}
 .vpn-note strong{color:var(--ink)}
 
@@ -244,14 +264,15 @@ section{padding:52px 0}
 .fazit strong{color:#FFFFFF}
 .fazit .mono-line{font-family:var(--mono);font-size:.74rem;color:#A9BACB;margin-top:8px}
 
-footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:center}
+footer{padding:30px 0 44px;font-size:.95rem;color:var(--ink-soft);text-align:center}
+footer strong{color:var(--ink)}
 </style>
 </head>
 <body>
 
 <header>
   <div class="nav">
-    <span class="brand"><span class="brand-dot"></span>Mein Diensthandy</span>
+    <span class="brand"><span class="brand-dot"></span>Hafid &amp; das Diensthandy</span>
     <nav class="nav-links">
       <a href="#explorer">Daten-Check</a>
       <a href="#vorteile">Vor- &amp; Nachteile</a>
@@ -266,27 +287,26 @@ footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:cen
 
   <!-- HERO -->
   <div class="hero">
-    <div class="eyebrow">Einfach erklärt · ohne Fachchinesisch</div>
-    <h1>Liest mein Chef heimlich mit? Nein – und hier steht, warum.</h1>
-    <p>Sie haben ein Diensthandy, dürfen es privat nutzen – und in den Einstellungen taucht ein „Verwaltungsprofil" auf. Das klingt nach Überwachung, ist aber in Wahrheit etwas ganz anderes: eine Art digitaler Hausmeister, der sich um Sicherheit und Firmen-Apps kümmert. Diese Seite zeigt Ihnen ehrlich, was Ihr Arbeitgeber sehen kann, was er garantiert <em>nicht</em> sehen kann – und wo die Vor- und Nachteile liegen.</p>
+    <div class="eyebrow">Für Hafid · einfach erklärt · ohne Fachchinesisch</div>
+    <h1>Hafid, keine Angst vorm Diensthandy – hier steht, warum.</h1>
+    <p>Du überlegst noch, ob du dir ein Diensthandy holen sollst? Verständlich – auf so einem Gerät ist ein „Verwaltungsprofil" der Firma installiert, und das klingt erstmal nach Überwachung. Ist es aber nicht: eher ein digitaler Hausmeister, der sich um Sicherheit und Firmen-Apps kümmert. Julian hat sein eigenes Diensthandy für diese Seite genau unter die Lupe genommen. Hier siehst du ehrlich, was der Arbeitgeber sehen kann, was garantiert privat bleibt – und ob sich das Ganze für dich lohnt. Entscheiden musst am Ende du.</p>
 
     <div class="calm">
-      <h2>🛡️ Das Wichtigste vorweg</h2>
-      <p>Ihre privaten WhatsApp-Chats, Fotos, Nachrichten und Passwörter kann Ihr Arbeitgeber <strong>nicht lesen</strong>. Das ist keine Vertrauensfrage, sondern von Apple technisch fest ins iPhone eingebaut: Die Geräteverwaltung und Ihre privaten Inhalte sind strikt voneinander getrennt. Ein Verwaltungsprofil ist keine Spionagesoftware.</p>
-    </div>
-
-    <div class="legend" aria-hidden="true">
-      <span class="legend-item"><span class="dot a"></span>Kann die Firma sehen / verwalten</span>
-      <span class="legend-item"><span class="dot g"></span>Bleibt privat – technisch geschützt</span>
-      <span class="legend-item"><span class="dot b"></span>Kommt darauf an</span>
+      <h2>🛡️ Das Wichtigste vorweg, Hafid</h2>
+      <p>Private WhatsApp-Chats, Fotos, Nachrichten und Passwörter kann der Arbeitgeber <strong>auch auf einem Diensthandy nicht lesen</strong>. Das ist keine Vertrauensfrage, sondern von Apple technisch fest ins iPhone eingebaut: Die Geräteverwaltung und deine privaten Inhalte sind strikt voneinander getrennt. Ein Verwaltungsprofil ist keine Spionagesoftware.</p>
     </div>
   </div>
 
   <!-- DATEN-CHECK -->
   <section id="explorer">
     <div class="section-head">
-      <h2>Probieren Sie es aus: Der Daten-Check</h2>
-      <p>Tippen Sie auf ein Symbol – die Ampel zeigt sofort, ob Ihr Arbeitgeber Zugriff hat.</p>
+      <h2>Probier es aus: Der Daten-Check</h2>
+      <p>So sähe es auf deinem Diensthandy aus. Tipp auf ein Symbol – die Ampel zeigt dir sofort, ob der Arbeitgeber Zugriff hätte.</p>
+    </div>
+    <div class="legend">
+      <span class="legend-item"><span class="dot a"></span>Kann die Firma sehen / verwalten</span>
+      <span class="legend-item"><span class="dot g"></span>Bleibt privat – technisch geschützt</span>
+      <span class="legend-item"><span class="dot b"></span>Kommt darauf an</span>
     </div>
     <div class="explorer">
       <div class="phone" role="group" aria-label="iPhone-Simulation mit Datenkategorien">
@@ -298,8 +318,8 @@ footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:cen
       </div>
       <div class="detail" id="detail" aria-live="polite">
         <span class="detail-status b" id="detailStatus">Kategorie wählen</span>
-        <h3 id="detailTitle">Wählen Sie eine Kategorie</h3>
-        <p id="detailText">Tippen Sie links auf ein Symbol, um zu erfahren, ob Ihr Arbeitgeber diese Daten sehen kann – und warum.</p>
+        <h3 id="detailTitle">Wähle eine Kategorie</h3>
+        <p id="detailText">Tipp oben auf ein Symbol, um zu erfahren, ob der Arbeitgeber diese Daten sehen könnte – und warum.</p>
         <div class="detail-hint" id="detailHint">Grundlage: die eingebauten Datenschutz-Regeln von iOS</div>
       </div>
     </div>
@@ -308,28 +328,28 @@ footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:cen
   <!-- VOR- UND NACHTEILE -->
   <section id="vorteile">
     <div class="section-head">
-      <h2>Vor- und Nachteile eines verwalteten Diensthandys</h2>
-      <p>Ehrlich abgewogen: Das Verwaltungsprofil bringt Ihnen echte Vorteile – und ein paar Einschränkungen, die Sie kennen sollten.</p>
+      <h2>Was für ein Diensthandy spricht – und was du wissen solltest</h2>
+      <p>Ehrlich abgewogen, damit du in Ruhe entscheiden kannst. Die Vorteile überwiegen ziemlich deutlich – aber die Punkte rechts solltest du trotzdem kennen.</p>
     </div>
     <div class="cols">
       <div class="panel pro">
-        <h3><span class="dot g"></span>Ihre Vorteile</h3>
+        <h3><span class="dot g"></span>Das spricht dafür</h3>
         <ul>
-          <li><strong>Kostenloses Gerät:</strong> Sie nutzen ein aktuelles iPhone auch privat – die Firma zahlt.</li>
-          <li><strong>Schutz bei Verlust:</strong> Geht das Handy verloren, kann die IT es sperren – niemand kommt an Ihre Daten, auch nicht an die privaten.</li>
-          <li><strong>Immer sicher:</strong> Verschlüsselung, Passcode und Updates werden automatisch durchgesetzt. Davon profitieren auch Ihre privaten Fotos und Chats.</li>
-          <li><strong>Alles eingerichtet:</strong> Firmen-Mail, WLAN und VPN funktionieren einfach – ohne dass Sie etwas konfigurieren müssen.</li>
+          <li><strong>Top-Gerät für einen kleinen Obolus:</strong> Du bekommst ein aktuelles iPhone, das du auch privat nutzen darfst – und zahlst dafür nur einen kleinen Beitrag statt des vollen Preises.</li>
+          <li><strong>Schutz bei Verlust:</strong> Geht das Handy verloren, kann die IT es sperren – niemand kommt an deine Daten, auch nicht an die privaten.</li>
+          <li><strong>Immer sicher:</strong> Verschlüsselung, Passcode und Updates werden automatisch durchgesetzt. Davon würden auch deine privaten Fotos und Chats profitieren.</li>
+          <li><strong>Alles eingerichtet:</strong> Firmen-Mail, WLAN und VPN funktionieren vom ersten Tag an – ohne dass du etwas konfigurieren musst.</li>
           <li><strong>Klare Trennung:</strong> Firmendaten und Privates bleiben sauber auseinander – das schützt beide Seiten.</li>
         </ul>
       </div>
       <div class="panel contra">
-        <h3><span class="dot a"></span>Die Nachteile</h3>
+        <h3><span class="dot a"></span>Das solltest du wissen</h3>
         <ul>
           <li><strong>App-Liste ist sichtbar:</strong> Die Firma kann sehen, <em>welche</em> Apps installiert sind – nicht deren Inhalte, aber immerhin die Titel.</li>
-          <li><strong>Fern-Löschung möglich:</strong> Im Ernstfall (Verlust, Kündigung) kann das Gerät komplett gelöscht werden – private Fotos ohne Backup wären weg. Tipp: eigenes iCloud-Backup mit privater Apple-ID nutzen.</li>
+          <li><strong>Fern-Löschung möglich:</strong> Im Ernstfall (Verlust, Kündigung) kann das Gerät komplett gelöscht werden – private Fotos ohne Backup wären weg. Die Lösung ist einfach: eigenes iCloud-Backup mit deiner privaten Apple-ID einrichten.</li>
           <li><strong>Einschränkungen:</strong> Manche Funktionen können gesperrt sein (z.&nbsp;B. bestimmte Einstellungen) – die Firma bestimmt die Regeln.</li>
           <li><strong>Restunsicherheit:</strong> Wie jede einzelne Regel konfiguriert ist, sieht man von außen nicht zu 100&nbsp;% – im Zweifel bei IT oder Betriebsrat nachfragen.</li>
-          <li><strong>Firmenkonto = Firmendaten:</strong> Alles, was Sie über die Firmen-Mail oder Firmen-Apps schreiben, gehört dem Unternehmen.</li>
+          <li><strong>Firmenkonto = Firmendaten:</strong> Alles, was du über die Firmen-Mail oder Firmen-Apps schreiben würdest, gehört dem Unternehmen.</li>
         </ul>
       </div>
     </div>
@@ -338,8 +358,8 @@ footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:cen
   <!-- VPN -->
   <section id="vpn">
     <div class="section-head">
-      <h2>„Da ist ein Firmen-VPN – wird jetzt alles mitgelesen?"</h2>
-      <p>Nein. Auf Ihrem Gerät ist ein sogenanntes <strong>Per-App-VPN</strong> eingerichtet: Nur die Firmen-Apps nutzen den sicheren Tunnel zur Firma. Alles Private geht ganz normal ins Internet – so, als gäbe es das Profil gar nicht. Schalten Sie um und sehen Sie den Unterschied:</p>
+      <h2>„Da ist ein Firmen-VPN – wird dann alles mitgelesen?"</h2>
+      <p>Nein. Auf unseren Diensthandys ist ein sogenanntes <strong>Per-App-VPN</strong> eingerichtet: Nur die Firmen-Apps nutzen den sicheren Tunnel zur Firma. Alles Private geht ganz normal ins Internet – so, als gäbe es das Profil gar nicht. Schalte um und sieh den Unterschied:</p>
     </div>
     <div class="vpn-demo">
       <div class="vpn-toggle" role="group" aria-label="App-Typ wählen">
@@ -347,7 +367,7 @@ footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:cen
         <button type="button" class="vpn-btn" id="btnPrivate">💬 Private App (z.&nbsp;B. WhatsApp)</button>
       </div>
       <div class="vpn-route">
-        <div class="node"><strong id="srcName">Outlook</strong><span>auf Ihrem iPhone</span></div>
+        <div class="node"><strong id="srcName">Outlook</strong><span>auf dem Diensthandy</span></div>
         <div class="arrow company" id="arrow1"></div>
         <div class="node tunnel" id="tunnelNode"><strong>Firmen-Tunnel</strong><span>nur für Firmen-Apps</span></div>
         <div class="arrow company" id="arrow2"></div>
@@ -360,13 +380,13 @@ footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:cen
   <!-- MERKSÄTZE -->
   <section id="merken">
     <div class="section-head">
-      <h2>Vier Sätze, die Sie sich merken können</h2>
+      <h2>Vier Sätze, die du dir merken kannst</h2>
     </div>
     <div class="rules">
-      <div class="rule"><span class="num">Merksatz 1</span><p><strong>Verwalten heißt nicht mitlesen.</strong> Die Firma verwaltet das Gerät (Sicherheit, Apps, Sperren) – nicht Ihre Inhalte.</p></div>
+      <div class="rule"><span class="num">Merksatz 1</span><p><strong>Verwalten heißt nicht mitlesen.</strong> Die Firma verwaltet das Gerät (Sicherheit, Apps, Sperren) – nicht deine Inhalte.</p></div>
       <div class="rule"><span class="num">Merksatz 2</span><p><strong>Apple baut die Mauer.</strong> Die Trennung von Firmen- und Privatdaten ist in iOS fest eingebaut – der Arbeitgeber kann sie nicht umgehen.</p></div>
-      <div class="rule"><span class="num">Merksatz 3</span><p><strong>Firmenkonto = Firmensache.</strong> Nur was Sie in Firmen-Apps und über die Firmen-Mail machen, ist für die Firma einsehbar. Also: Privates privat halten.</p></div>
-      <div class="rule"><span class="num">Merksatz 4</span><p><strong>Fragen ist erlaubt.</strong> IT-Abteilung und Betriebsrat müssen Ihnen sagen können, welche Regeln gelten. In Deutschland schützt Sie zusätzlich der Datenschutz (DSGVO).</p></div>
+      <div class="rule"><span class="num">Merksatz 3</span><p><strong>Firmenkonto = Firmensache.</strong> Nur was du in Firmen-Apps und über die Firmen-Mail machst, ist für die Firma einsehbar. Also: Privates privat halten.</p></div>
+      <div class="rule"><span class="num">Merksatz 4</span><p><strong>Fragen ist erlaubt.</strong> IT-Abteilung und Betriebsrat müssen dir sagen können, welche Regeln gelten. In Deutschland schützt dich zusätzlich der Datenschutz (DSGVO).</p></div>
     </div>
   </section>
 
@@ -381,16 +401,16 @@ footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:cen
   <!-- FAZIT -->
   <section id="fazit">
     <div class="fazit">
-      <h2>Fazit: Kein Grund zur Sorge</h2>
-      <p>Ihr Diensthandy wird professionell verwaltet – mit dem Ziel, <strong>Firmendaten zu schützen</strong>, nicht Sie zu überwachen. Die Rechte der Firma betreffen das Gerät (sperren, löschen, Apps verteilen), nicht Ihr Privatleben. Ihre Chats, Fotos und Passwörter bleiben durch die eingebauten Schutzmechanismen von iOS privat.</p>
-      <p>Die einzige goldene Regel: <strong>Trennen Sie Privates und Berufliches.</strong> Private Dinge in privaten Apps mit der privaten Apple-ID – dann haben Sie alle Vorteile des Diensthandys ohne Bauchschmerzen.</p>
+      <h2>Fazit: Du kannst dich trauen, Hafid</h2>
+      <p>Ein Diensthandy wird professionell verwaltet – mit dem Ziel, <strong>Firmendaten zu schützen</strong>, nicht dich zu überwachen. Die Rechte der Firma betreffen das Gerät (sperren, löschen, Apps verteilen), nicht dein Privatleben. Chats, Fotos und Passwörter bleiben durch die eingebauten Schutzmechanismen von iOS privat. Julian hat das an seinem eigenen Gerät durchleuchtet – und nutzt es weiter mit gutem Gewissen.</p>
+      <p>Falls du dich dafür entscheidest, gibt es nur eine goldene Regel: <strong>Trenne Privates und Berufliches.</strong> Private Dinge in privaten Apps mit deiner privaten Apple-ID – dann hast du alle Vorteile ohne Bauchschmerzen.</p>
       <p class="mono-line">Verwaltetes Gerät · private Nutzung erlaubt · private Inhalte technisch getrennt</p>
     </div>
   </section>
 
 </div>
 
-<footer>Diese Seite dient der allgemeinen Information und ersetzt keine Rechtsberatung.<br>Bei konkreten Fragen helfen IT-Abteilung, Betriebsrat oder Datenschutzbeauftragte weiter.</footer>
+<footer>Diese Seite wird dir präsentiert von deinem lieben Kollegen <strong>Julian</strong>.<br><strong>Gönn dir ein Diensthandy, Habibi!</strong> 📱✨</footer>
 
 <script>
 (function(){
@@ -398,18 +418,18 @@ footer{padding:30px 0 44px;font-size:.82rem;color:var(--ink-soft);text-align:cen
 
 /* ---------- Daten-Check ---------- */
 var cats = [
-  {icon:"💬",label:"WhatsApp",status:"g",title:"Ihre WhatsApp-Chats",text:"Bleiben komplett privat. Die App ist auf dem iPhone in einem eigenen, abgeschotteten Bereich – und die Chats sind zusätzlich verschlüsselt. Selbst mit größtem Aufwand könnte die Firma hier nicht mitlesen.",hint:"Abgeschottet + verschlüsselt = doppelt sicher"},
-  {icon:"🖼️",label:"Fotos",status:"g",title:"Ihre privaten Fotos & Videos",text:"Ihre Fotomediathek ist für die Geräteverwaltung unsichtbar. Die Firma sieht weder Bilder noch Alben – das lässt Apple technisch gar nicht zu.",hint:"Kein Zugriff möglich – von Apple so gebaut"},
-  {icon:"✉️",label:"iMessage",status:"g",title:"Ihre Nachrichten (iMessage/SMS)",text:"Was Sie privat schreiben, bleibt privat. Die Nachrichten-App gehört zu Ihrem persönlichen Bereich, auf den die Verwaltung keinen Zugriff hat.",hint:"Persönlicher Bereich – für die Firma tabu"},
-  {icon:"🌐",label:"Safari",status:"g",title:"Ihr Browser-Verlauf",text:"Welche Webseiten Sie besuchen, wird nicht an die Firma gemeldet. Kleiner Hinweis: Im Firmen-WLAN kann das Netzwerk selbst sehen, welche Seiten aufgerufen werden – das gilt aber in jedem WLAN und hat nichts mit dem Handyprofil zu tun.",hint:"Tipp: Privates lieber über Mobilfunk surfen"},
-  {icon:"🔑",label:"Passwörter",status:"g",title:"Ihre gespeicherten Passwörter",text:"Alle im iPhone gespeicherten Passwörter sind stark verschlüsselt und für die Geräteverwaltung unerreichbar.",hint:"Verschlüsselt im sicheren Chip des iPhones"},
-  {icon:"👤",label:"Kontakte",status:"g",title:"Ihre privaten Kontakte",text:"Private Kontakte bleiben privat. Nur wenn Sie Kontakte bewusst im Firmen-Konto speichern, liegen sie auf dem Firmenserver – achten Sie beim Speichern einfach auf das richtige Konto.",hint:"Beim Speichern: privates Konto wählen"},
-  {icon:"📧",label:"Firmen-Mail",status:"a",title:"Firmen-E-Mails & -Kalender",text:"Alles im Firmen-Postfach gehört der Firma und liegt auf deren Servern – das wäre auch am Firmen-PC so. Deshalb: private Mails über ein privates Konto schreiben.",hint:"Gilt am Handy genauso wie am Büro-PC"},
-  {icon:"📦",label:"App-Liste",status:"a",title:"Welche Apps installiert sind",text:"Die Firma kann sehen, DASS z. B. WhatsApp oder Instagram installiert ist – aber niemals, was Sie darin tun. Vergleichbar mit einem Bücherregal: Man sieht die Buchrücken, aber kann die Bücher nicht aufschlagen.",hint:"Nur die Titel – nie die Inhalte"},
-  {icon:"🛠️",label:"Firmen-Apps",status:"a",title:"Die Firmen-Apps",text:"Apps wie Outlook oder Teams hat die Firma installiert und kann sie verwalten, aktualisieren und entfernen. Was Sie DARIN schreiben, ist Firmensache – wie eine dienstliche E-Mail.",hint:"Faustregel: Firmen-App = Firmendaten"},
-  {icon:"📱",label:"Geräteinfo",status:"a",title:"Technische Gerätedaten",text:"Modell, Seriennummer, iOS-Version und ob ein Passcode gesetzt ist – solche technischen Infos sieht die IT. Das ist wie beim Firmenwagen: Kennzeichen und TÜV-Status sind bekannt, aber nicht, mit wem Sie fahren.",hint:"Technik-Check, keine Inhalte"},
+  {icon:"💬",label:"WhatsApp",status:"g",title:"Deine WhatsApp-Chats",text:"Blieben komplett privat. Die App ist auf dem iPhone in einem eigenen, abgeschotteten Bereich – und die Chats sind zusätzlich verschlüsselt. Selbst mit größtem Aufwand könnte die Firma hier nicht mitlesen.",hint:"Abgeschottet + verschlüsselt = doppelt sicher"},
+  {icon:"🖼️",label:"Fotos",status:"g",title:"Deine privaten Fotos & Videos",text:"Die Fotomediathek ist für die Geräteverwaltung unsichtbar. Die Firma sieht weder Bilder noch Alben – das lässt Apple technisch gar nicht zu.",hint:"Kein Zugriff möglich – von Apple so gebaut"},
+  {icon:"✉️",label:"iMessage",status:"g",title:"Deine Nachrichten (iMessage/SMS)",text:"Was du privat schreibst, bleibt privat. Die Nachrichten-App gehört zum persönlichen Bereich, auf den die Verwaltung keinen Zugriff hat.",hint:"Persönlicher Bereich – für die Firma tabu"},
+  {icon:"🌐",label:"Safari",status:"g",title:"Dein Browser-Verlauf",text:"Welche Webseiten du besuchst, wird nicht an die Firma gemeldet. Kleiner Hinweis: Im Firmen-WLAN kann das Netzwerk selbst sehen, welche Seiten aufgerufen werden – das gilt aber in jedem WLAN und hat nichts mit dem Handyprofil zu tun.",hint:"Tipp: Privates lieber über Mobilfunk surfen"},
+  {icon:"🔑",label:"Passwörter",status:"g",title:"Deine gespeicherten Passwörter",text:"Alle im iPhone gespeicherten Passwörter sind stark verschlüsselt und für die Geräteverwaltung unerreichbar.",hint:"Verschlüsselt im sicheren Chip des iPhones"},
+  {icon:"👤",label:"Kontakte",status:"g",title:"Deine privaten Kontakte",text:"Private Kontakte bleiben privat. Nur wenn du Kontakte bewusst im Firmen-Konto speicherst, liegen sie auf dem Firmenserver – achte beim Speichern einfach auf das richtige Konto.",hint:"Beim Speichern: privates Konto wählen"},
+  {icon:"📧",label:"Firmen-Mail",status:"a",title:"Firmen-E-Mails & -Kalender",text:"Alles im Firmen-Postfach gehört der Firma und liegt auf deren Servern – das ist am Firmen-PC genauso. Deshalb: private Mails über ein privates Konto schreiben.",hint:"Gilt am Handy genauso wie am Büro-PC"},
+  {icon:"📦",label:"App-Liste",status:"a",title:"Welche Apps installiert sind",text:"Die Firma kann sehen, DASS z. B. WhatsApp oder Instagram installiert ist – aber niemals, was du darin tust. Vergleichbar mit einem Bücherregal: Man sieht die Buchrücken, aber kann die Bücher nicht aufschlagen.",hint:"Nur die Titel – nie die Inhalte"},
+  {icon:"🛠️",label:"Firmen-Apps",status:"a",title:"Die Firmen-Apps",text:"Apps wie Outlook oder Teams installiert die Firma und kann sie verwalten, aktualisieren und entfernen. Was du DARIN schreibst, ist Firmensache – wie eine dienstliche E-Mail.",hint:"Faustregel: Firmen-App = Firmendaten"},
+  {icon:"📱",label:"Geräteinfo",status:"a",title:"Technische Gerätedaten",text:"Modell, Seriennummer, iOS-Version und ob ein Passcode gesetzt ist – solche technischen Infos sieht die IT. Das ist wie beim Firmenwagen: Kennzeichen und TÜV-Status sind bekannt, aber nicht, mit wem du fährst.",hint:"Technik-Check, keine Inhalte"},
   {icon:"🔒",label:"Zertifikate",status:"a",title:"Zertifikate & Anmeldung",text:"Die Zertifikate auf dem Gerät sind digitale Ausweise: Sie beweisen den Firmenservern, dass dieses Handy dazugehört. Sie sind zum Anmelden da – nicht zum Mitlesen.",hint:"Digitaler Werksausweis, kein Abhörgerät"},
-  {icon:"📍",label:"Standort",status:"b",title:"Ihr Standort",text:"Kommt darauf an – aber Entwarnung: Eine Ortung ist höchstens beim Verlust des Geräts vorgesehen. In Ihrem Profil gibt es keinen Hinweis auf eine dauerhafte Ortung oder Bewegungsprofile. Heimliches Dauer-Tracking wäre in Deutschland zudem rechtlich kaum zulässig.",hint:"Kein Hinweis auf Ortung im Profil gefunden"}
+  {icon:"📍",label:"Standort",status:"b",title:"Dein Standort",text:"Kommt darauf an – aber Entwarnung: Eine Ortung ist höchstens beim Verlust des Geräts vorgesehen. Julian hat das Firmenprofil auf seinem Gerät geprüft: kein Hinweis auf dauerhafte Ortung oder Bewegungsprofile. Heimliches Dauer-Tracking wäre in Deutschland zudem rechtlich kaum zulässig.",hint:"Im Firmenprofil: kein Hinweis auf Ortung"}
 ];
 
 var statusLabel = {g:"● Bleibt privat", a:"● Kann die Firma sehen", b:"● Kommt darauf an"};
@@ -468,20 +488,20 @@ function setVpn(mode){
   if (company) {
     note.innerHTML = "<strong>Firmen-Verkehr:</strong> Mails und Daten der Firmen-Apps laufen durch den Tunnel ins Firmennetz – das ist normal und dient der Sicherheit der Firmendaten.";
   } else {
-    note.innerHTML = "<strong>Privater Verkehr:</strong> Ihre privaten Apps machen einen Bogen um die Firma und gehen direkt ins Internet – als gäbe es das Profil gar nicht. WhatsApp &amp; Co. sind zusätzlich verschlüsselt.";
+    note.innerHTML = "<strong>Privater Verkehr:</strong> Private Apps machen einen Bogen um die Firma und gehen direkt ins Internet – als gäbe es das Profil gar nicht. WhatsApp &amp; Co. sind zusätzlich verschlüsselt.";
   }
 }
 
 /* ---------- FAQ ---------- */
 var faqs = [
-  {q:"Liest mein Arbeitgeber meine WhatsApp-Nachrichten oder sieht meine Fotos?",a:"Nein – und zwar garantiert nicht. Das ist keine Frage des Vertrauens, sondern der Technik: Apple hat das iPhone so gebaut, dass die Geräteverwaltung keinen Zugriff auf private Apps, Chats oder die Fotomediathek hat. Diese Grenze kann Ihr Arbeitgeber nicht umgehen, selbst wenn er wollte."},
-  {q:"Was ist dieses „Verwaltungsprofil\u201C überhaupt?",a:"Stellen Sie es sich wie einen Hausmeister für das Handy vor: Es sorgt dafür, dass ein Passcode gesetzt ist, das Gerät verschlüsselt ist, die Firmen-Apps aktuell sind und die Firmen-Mail funktioniert. Es kümmert sich um das Gerät – nicht um Sie."},
-  {q:"Kann die Firma sehen, welche Apps ich installiert habe?",a:"Ja, das ist der wichtigste Punkt, den Sie kennen sollten: Die Liste der installierten Apps ist einsehbar – also z. B., dass Tinder oder Instagram installiert ist. Die Inhalte darin bleiben aber unsichtbar. Wenn Ihnen schon die App-Titel unangenehm wären, ist ein zweites, privates Handy die entspanntere Lösung."},
-  {q:"Läuft mein privates Surfen über das Firmen-VPN?",a:"Nein. Ihr Gerät nutzt ein „Per-App-VPN\u201C: Nur die Firmen-Apps gehen durch den Firmentunnel. Private Apps und Ihr Browser nutzen die normale Internetverbindung. Ein deutliches Zeichen dafür: Sie konnten parallel sogar ein eigenes VPN (z. B. NordVPN) einschalten – bei einer Komplett-Überwachung wäre das nicht möglich."},
-  {q:"Kann mein Chef sehen, wo ich bin?",a:"Nach allem, was das Profil zeigt: nein. Eine Ortung ist typischerweise nur für den Verlustfall vorgesehen. Für Ihr Gerät gibt es keinen Hinweis auf Echtzeit-Ortung oder Bewegungsprofile – und heimliches Dauer-Tracking von Mitarbeitern wäre in Deutschland rechtlich ohnehin kaum haltbar."},
-  {q:"Was passiert mit meinen privaten Fotos, wenn die Firma das Gerät löscht?",a:"Bei einer Fern-Löschung (z. B. bei Verlust oder wenn Sie die Firma verlassen) wird das Gerät komplett zurückgesetzt – dann wären auch private Fotos weg, wenn es kein Backup gibt. Deshalb der wichtigste praktische Tipp dieser Seite: Richten Sie mit Ihrer privaten Apple-ID ein iCloud-Backup bzw. iCloud-Fotos ein. Dann sind Ihre Erinnerungen immer sicher."},
+  {q:"Würde mein Arbeitgeber meine WhatsApp-Nachrichten lesen oder meine Fotos sehen?",a:"Nein – und zwar garantiert nicht. Das ist keine Frage des Vertrauens, sondern der Technik: Apple hat das iPhone so gebaut, dass die Geräteverwaltung keinen Zugriff auf private Apps, Chats oder die Fotomediathek hat. Diese Grenze kann kein Arbeitgeber umgehen, selbst wenn er wollte."},
+  {q:"Was ist dieses „Verwaltungsprofil\u201C überhaupt?",a:"Stell es dir wie einen Hausmeister für das Handy vor: Es sorgt dafür, dass ein Passcode gesetzt ist, das Gerät verschlüsselt ist, die Firmen-Apps aktuell sind und die Firmen-Mail funktioniert. Es kümmert sich um das Gerät – nicht um dich."},
+  {q:"Kann die Firma sehen, welche Apps ich installiere?",a:"Ja, das ist der wichtigste Punkt, den du vor der Entscheidung kennen solltest: Die Liste der installierten Apps ist einsehbar – also z. B., dass Tinder oder Instagram installiert ist. Die Inhalte darin bleiben aber unsichtbar. Wenn dir schon die App-Titel unangenehm wären, wäre ein zweites, privates Handy die entspanntere Lösung."},
+  {q:"Läuft mein privates Surfen über das Firmen-VPN?",a:"Nein. Die Diensthandys nutzen ein „Per-App-VPN\u201C: Nur die Firmen-Apps gehen durch den Firmentunnel. Private Apps und dein Browser nutzen die normale Internetverbindung. Ein deutliches Zeichen dafür: Man kann parallel sogar ein eigenes VPN (z. B. NordVPN) einschalten – bei einer Komplett-Überwachung wäre das nicht möglich."},
+  {q:"Könnte mein Chef sehen, wo ich bin?",a:"Nach allem, was das Firmenprofil zeigt (Julian hat seins geprüft): nein. Eine Ortung ist typischerweise nur für den Verlustfall vorgesehen. Es gibt keinen Hinweis auf Echtzeit-Ortung oder Bewegungsprofile – und heimliches Dauer-Tracking von Mitarbeitern wäre in Deutschland rechtlich ohnehin kaum haltbar."},
+  {q:"Was passiert mit meinen privaten Fotos, wenn die Firma das Gerät löscht?",a:"Bei einer Fern-Löschung (z. B. bei Verlust oder wenn man die Firma verlässt) wird das Gerät komplett zurückgesetzt – dann wären auch private Fotos weg, wenn es kein Backup gibt. Deshalb der wichtigste praktische Tipp dieser Seite: Richte von Anfang an mit deiner privaten Apple-ID ein iCloud-Backup bzw. iCloud-Fotos ein. Dann sind deine Erinnerungen immer sicher."},
   {q:"Sind meine Firmen-Mails privat?",a:"Nein – alles im Firmen-Postfach und in Firmen-Apps wie Teams gehört dem Unternehmen, genau wie am Büro-PC. Die einfache Regel: Privates über private Apps und private Konten, Dienstliches über die Firmen-Apps. Dann gibt es nie ein Problem."},
-  {q:"Wie kann ich sicher sein, dass wirklich alles so ist?",a:"Zu 100 % lässt sich von außen nicht jede einzelne Einstellung prüfen – das ist der ehrliche Teil der Antwort. Aber: Alles, was auf dem Gerät sichtbar ist, spricht für eine ganz normale, professionelle Verwaltung. Und Sie haben ein Recht auf Auskunft: IT-Abteilung, Betriebsrat und Datenschutzbeauftragte müssen Ihnen erklären, welche Regeln gelten. In Deutschland schützt Sie zusätzlich die DSGVO – heimliche Überwachung wäre für den Arbeitgeber ein erhebliches rechtliches Risiko."}
+  {q:"Wie kann ich sicher sein, dass wirklich alles so ist?",a:"Zu 100 % lässt sich von außen nicht jede einzelne Einstellung prüfen – das ist der ehrliche Teil der Antwort. Aber: Alles, was Julian auf seinem Gerät geprüft hat, spricht für eine ganz normale, professionelle Verwaltung. Und du hast ein Recht auf Auskunft: IT-Abteilung, Betriebsrat und Datenschutzbeauftragte müssen dir erklären, welche Regeln gelten. In Deutschland schützt dich zusätzlich die DSGVO – heimliche Überwachung wäre für den Arbeitgeber ein erhebliches rechtliches Risiko."}
 ];
 
 function buildFaq(){
