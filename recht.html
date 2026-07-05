@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Darf der Arbeitgeber bei Krankschreibung aufs Diensthandy zugreifen? Die Rechtslage in Deutschland – einfach erklärt, mit Quellen.">
+<title>Rechtliches – Darf die Firma bei Krankheit aufs Diensthandy zugreifen?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light dark;
+  --bg:#F4F6FA;
+  --card:#FFFFFF;
+  --ink:#131D28;
+  --ink-soft:#3D4C5C;
+  --line:#D5DDE6;
+  --blue:#2350C4;
+  --blue-strong:#2350C4;
+  --blue-soft:#E7EDFB;
+  --green:#0E7A4F;
+  --green-strong:#0E7A4F;
+  --green-soft:#E2F4EC;
+  --amber:#9E5D00;
+  --amber-strong:#9E5D00;
+  --amber-soft:#FBEFDC;
+  --dark-panel:#18232F;
+  --dark-panel-text:#E4EBF3;
+  --mono:'IBM Plex Mono',monospace;
+  --radius:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0F161E;
+    --card:#1A2530;
+    --ink:#F2F6FA;
+    --ink-soft:#C0CCD9;
+    --line:#31404F;
+    --blue:#7FA3F5;
+    --blue-strong:#9BB8F8;
+    --blue-soft:#22314B;
+    --green:#4FC896;
+    --green-strong:#6FD8AC;
+    --green-soft:#15332A;
+    --amber:#F0B45C;
+    --amber-strong:#F5C97F;
+    --amber-soft:#3A2E17;
+    --dark-panel:#22303E;
+    --dark-panel-text:#E4EBF3;
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:16px;
+}
+h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.2;color:var(--ink)}
+a{color:var(--blue-strong)}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:860px;margin:0 auto}
+.brand{font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:9px;color:var(--ink)}
+.brand-dot{width:10px;height:10px;border-radius:3px;background:var(--blue);display:inline-block}
+.back{font-size:.85rem;font-weight:500;text-decoration:none}
+.back:hover,.back:focus-visible{text-decoration:underline}
+
+.hero{padding:56px 0 20px}
+.eyebrow{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue-strong);font-weight:500;margin-bottom:14px;
+}
+.hero h1{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;max-width:26ch;margin-bottom:18px}
+.hero p{max-width:64ch;color:var(--ink-soft);font-size:1.02rem}
+
+.answer{
+  margin:26px 0 0;background:var(--green-soft);border:1.5px solid var(--green);
+  border-radius:var(--radius);padding:22px 24px;
+}
+.answer h2{font-size:1.05rem;color:var(--green-strong);margin-bottom:8px;display:flex;align-items:center;gap:9px}
+.answer p{color:var(--ink);font-size:.96rem}
+
+section{padding:40px 0 8px}
+section h2{font-size:clamp(1.2rem,2.6vw,1.55rem);margin-bottom:14px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;margin-bottom:16px;
+}
+.card h3{font-size:1.02rem;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.card p{color:var(--ink-soft);font-size:.94rem;margin-bottom:10px}
+.card p:last-child{margin-bottom:0}
+.card strong{color:var(--ink)}
+.card ul{list-style:none;margin-top:4px}
+.card li{padding:8px 0 8px 26px;position:relative;font-size:.93rem;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+.card li:last-child{border-bottom:none}
+.card li::before{content:"→";position:absolute;left:0;top:8px;color:var(--blue-strong);font-weight:700}
+.card li strong{color:var(--ink)}
+.dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;display:inline-block}
+.dot.g{background:var(--green)} .dot.a{background:var(--amber)} .dot.b{background:var(--blue)}
+
+.hafid{
+  background:var(--blue-soft);border:1.5px solid var(--blue);border-radius:var(--radius);
+  padding:22px 24px;margin:32px 0 8px;
+}
+.hafid h2{font-size:1.05rem;color:var(--blue-strong);margin-bottom:8px}
+.hafid p{color:var(--ink);font-size:.96rem}
+
+.sources{padding:40px 0 20px}
+.sources h2{margin-bottom:8px}
+.sources > p{color:var(--ink-soft);font-size:.92rem;margin-bottom:16px;max-width:64ch}
+.src{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 20px;margin-bottom:10px;
+}
+.src .kind{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue-strong);display:block;margin-bottom:5px;font-weight:500;
+}
+.src a{font-weight:600;font-size:.94rem;text-decoration:none;color:var(--ink);word-break:break-word}
+.src a:hover,.src a:focus-visible{text-decoration:underline;color:var(--blue-strong)}
+.src p{font-size:.86rem;color:var(--ink-soft);margin-top:4px}
+
+.disclaimer{
+  margin:28px 0 0;border-left:3px solid var(--amber);padding:4px 0 4px 16px;
+  font-size:.88rem;color:var(--ink-soft);
+}
+.disclaimer strong{color:var(--ink)}
+
+footer{padding:36px 0 44px;font-size:.95rem;color:var(--ink-soft);text-align:center}
+footer strong{color:var(--ink)}
+footer a{font-weight:600}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <span class="brand"><span class="brand-dot"></span>Hafid &amp; das Diensthandy</span>
+    <a class="back" href="index.html">← Zurück zur Startseite</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Rechtliches · Deutschland · einfach erklärt</div>
+    <h1>„Und wenn die Firma mir nicht traut – darf sie dann heimlich aufs Handy schauen?"</h1>
+    <p>Ein Gedanke, der viele beschäftigt: Was ist, wenn der Arbeitgeber irgendwann misstrauisch wird – zum Beispiel bei häufigen Krankmeldungen? Darf er dann das Diensthandy orten oder Daten auslesen, um etwas zu „beweisen"? Hier ist die Rechtslage, damit du weißt, wie gut du geschützt bist.</p>
+
+    <div class="answer">
+      <h2>⚖️ Die kurze Antwort: Nein.</h2>
+      <p>Auch bei Verdacht darf der Arbeitgeber <strong>nicht einfach</strong> aufs Diensthandy zugreifen, es orten oder Daten auslesen. Heimliche Überwachung ist in Deutschland nur in extremen Ausnahmefällen erlaubt – und ein Bauchgefühl („der macht bestimmt nur blau") reicht dafür bei Weitem nicht aus. Das MDM-Profil darf nicht als Spionagewerkzeug zweckentfremdet werden.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>Die Rechtslage im Detail</h2>
+
+    <div class="card">
+      <h3><span class="dot g"></span>Grundregel: Heimliche Ortung und Datenzugriff sind tabu</h3>
+      <p>Kein Vorgesetzter darf Mitarbeiter <strong>ohne deren Kenntnis oder Einverständnis</strong> orten oder überwachen. Standortdaten dürfen – wenn überhaupt – nur während der Arbeitszeit und für einen legitimen betrieblichen Zweck erfasst werden. In Pausen, nach Feierabend und erst recht während einer Krankschreibung ist das nicht gestattet. Lückenlose Bewegungsprofile sind sogar während der Arbeitszeit unzulässig.</p>
+      <p>Ist die private Nutzung des Diensthandys erlaubt (wie bei uns), wird der Schutz noch stärker: Der Arbeitgeber darf dann <strong>auch bei Krankheit nicht</strong> in Telefonverbindungen, Adressbücher oder private Inhalte auf dem Gerät schauen.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="dot a"></span>Die einzige, sehr enge Ausnahme</h3>
+      <p>Heimliche Überwachung kommt nur in Betracht, wenn ein <strong>konkreter, dokumentierter Verdacht auf eine Straftat</strong> besteht (z.&nbsp;B. Abrechnungsbetrug), die Interessen des Arbeitgebers klar überwiegen und es <strong>kein milderes Mittel</strong> gibt. „Der ist oft krank, bestimmt simuliert er" ist kein konkreter Verdacht – anlasslose Überwachung „auf Vorrat" ist ausdrücklich unzulässig.</p>
+      <p>Zusätzliche Hürde: In Unternehmen mit Betriebsrat ist die Standortverfolgung von Diensthandys ohne dessen Zustimmung ohnehin nicht zulässig (§&nbsp;87 Abs.&nbsp;1 Nr.&nbsp;6 BetrVG).</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="dot b"></span>Was der Arbeitgeber bei Zweifeln stattdessen legal tun kann</h3>
+      <ul>
+        <li><strong>Das Gespräch suchen</strong> und den Mitarbeiter auf Widersprüche ansprechen – der normale, faire Weg.</li>
+        <li><strong>Den Medizinischen Dienst der Krankenkasse einschalten</strong> (§&nbsp;275 SGB&nbsp;V): Der überprüft bei begründeten Zweifeln die Arbeitsunfähigkeit – von neutraler Stelle, nicht per Handy-Schnüffelei.</li>
+        <li><strong>In extremen Ausnahmefällen einen Detektiv beauftragen</strong> – aber nur bei berechtigtem Verdacht auf schweren Missbrauch und wenn es keine milderen Mittel gibt. Sonst macht sich der Arbeitgeber schadensersatzpflichtig.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="dot g"></span>Und wenn er es trotzdem täte?</h3>
+      <p>Dann fiele es ihm auf die Füße: Rechtswidrig beschaffte Daten sind vor dem Arbeitsgericht in der Regel <strong>nicht verwertbar</strong>, der Mitarbeiter kann <strong>Schadensersatz</strong> verlangen, und es drohen <strong>DSGVO-Bußgelder</strong>, die empfindlich hoch ausfallen können. Der vermeintliche „Beweis" würde dem Arbeitgeber also mehr schaden als nützen. Genau deshalb setzen professionell aufgestellte Firmen auf die legalen Wege oben – nicht aufs MDM.</p>
+    </div>
+
+    <div class="hafid">
+      <h2>Was das für dich heißt, Hafid</h2>
+      <p>Selbst im schlimmsten Fall – die Firma wird misstrauisch – darf sie dein Diensthandy nicht als Überwachungswerkzeug benutzen. Das Gesetz, der Betriebsrat und die DSGVO stehen zwischen deinem Privatleben und jedem Kontrollversuch. Die Technik (iOS trennt Privates ab) und das Recht (Überwachung verboten) schützen dich also doppelt.</p>
+    </div>
+  </section>
+
+  <section class="sources" id="quellen">
+    <h2>Quellen zum Nachlesen</h2>
+    <p>Alles hier Beschriebene kannst du selbst nachprüfen – hier sind die Quellen, auf die sich diese Seite stützt:</p>
+
+    <div class="src">
+      <span class="kind">Anwaltsverband</span>
+      <a href="https://anwaltverein.de/de/newsroom/nr-16-16-vorgesetzte-duerfen-diensthandy-ihrer-angestellten-nicht-ohne-einverstaendnis-orten" target="_blank" rel="noopener">Deutscher Anwaltverein: Vorgesetzte dürfen Diensthandys nicht ohne Einverständnis orten</a>
+      <p>Grundsatz: keine Ortung ohne Kenntnis und freiwilliges, schriftliches Einverständnis; Verhältnismäßigkeit ist immer zu wahren.</p>
+    </div>
+
+    <div class="src">
+      <span class="kind">Rechtsmagazin</span>
+      <a href="https://anwaltauskunft.de/magazin/beruf/angestellt/handy-ortung-darf-der-chef-mein-diensthandy-orten" target="_blank" rel="noopener">Deutsche Anwaltauskunft: Darf der Chef mein Diensthandy orten?</a>
+      <p>Einschätzung von Fachanwälten: Ortung nur bei objektiv erkennbarer Erforderlichkeit, mildere Mittel haben Vorrang.</p>
+    </div>
+
+    <div class="src">
+      <span class="kind">Ratgeber Arbeitsrecht</span>
+      <a href="https://www.arbeitsrechte.de/gps-ueberwachung-mitarbeiter/" target="_blank" rel="noopener">Arbeitsrechte.de: GPS-Überwachung der Mitarbeiter</a>
+      <p>Heimliche Ortung nur bei konkretem Straftatverdacht, überwiegendem Interesse und ohne mildere Mittel; außerhalb der Arbeitszeit grundsätzlich nicht erlaubt.</p>
+    </div>
+
+    <div class="src">
+      <span class="kind">Datenschutz-Fachportal</span>
+      <a href="https://www.dr-datenschutz.de/telefon-am-arbeitsplatz-kontrolle-privatnutzung-handyverbot/" target="_blank" rel="noopener">Dr. Datenschutz: Telefon am Arbeitsplatz – Kontrolle &amp; Privatnutzung</a>
+      <p>Bei erlaubter Privatnutzung darf der Arbeitgeber auch bei Krankheit nicht in Verbindungen oder Adressbücher auf dem Diensthandy schauen.</p>
+    </div>
+
+    <div class="src">
+      <span class="kind">Fachanwalt Arbeitsrecht</span>
+      <a href="https://www.jura.cc/rechtstipps/erreichbarkeit-waehrend-der-krankschreibung-rechte-und-pflichten-fuer-arbeitnehmer-und-arbeitgeber/" target="_blank" rel="noopener">Jura.cc: Rechte und Pflichten während der Krankschreibung</a>
+      <p>Kontrollen ohne konkreten Verdacht unzulässig; legaler Weg bei Zweifeln: Gespräch, Betriebsrat, Medizinischer Dienst der Krankenkasse.</p>
+    </div>
+
+    <div class="src">
+      <span class="kind">Fachanwalt Arbeitsrecht</span>
+      <a href="https://www.jura.cc/rechtstipps/mitarbeiterueberwachung-im-homeoffice-was-erlaubt-ist-und-was-nicht/" target="_blank" rel="noopener">Jura.cc: Mitarbeiterüberwachung – was erlaubt ist und was nicht</a>
+      <p>Rechtsgrundlagen (Art. 6 DSGVO, § 26 BDSG): Überwachung nur bei dokumentiertem Straftatverdacht, anlasslose Überwachung „auf Vorrat" ist unzulässig.</p>
+    </div>
+
+    <div class="src">
+      <span class="kind">Ratgeber mit Rechtsprechung</span>
+      <a href="https://www.juraforum.de/news/gps-ueberwachung-am-arbeitsplatz-und-der-datenschutz-ist-die-ortung-zulaessig_258462" target="_blank" rel="noopener">Juraforum: GPS-Überwachung am Arbeitsplatz und der Datenschutz</a>
+      <p>Mit Urteilen (u. a. ArbG Heilbronn): unzulässiges Live-Tracking, Mitbestimmung des Betriebsrats, enge Grenzen des § 26 BDSG.</p>
+    </div>
+
+    <div class="src">
+      <span class="kind">Überblick</span>
+      <a href="https://www.finanzen.net/nachricht/geld-karriere-lifestyle/firmenhandy-darf-der-arbeitgeber-das-diensthandy-orten-14206451" target="_blank" rel="noopener">finanzen.net: Diensthandy-Ortung – Was darf der Chef?</a>
+      <p>Aktueller Überblick (2026): Ortung nur mit freiwilliger, dokumentierter Einwilligung; Betriebsrats-Zustimmung nach § 87 BetrVG erforderlich.</p>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Wichtig:</strong> Diese Seite erklärt die allgemeine Rechtslage in Deutschland und ersetzt keine Rechtsberatung im Einzelfall. Bei einer konkreten Situation helfen Fachanwälte für Arbeitsrecht, der Betriebsrat oder die Datenschutzbeauftragten weiter.
+    </div>
+  </section>
+
+</div>
+
+<footer>Diese Seite wird dir präsentiert von deinem lieben Kollegen <strong>Julian</strong>.<br><a href="index.html">← Zurück zur Startseite</a></footer>
+
+</body>
+</html>
